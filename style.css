@@ -1,15 +1,23 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
     box-sizing: border-box;
     font-family: "Wanted Sans SemiBold", sans-serif;
+} */
+
+@font-face {
+    font-family: "Wanted Sans SemiBold";
+    src: url(https://github.com/100ehdals/DISC2025/blob/main/WANTEDSANS-SEMIBOLD.OTF) format(".OTF");
+    font-weight: 200;
 }
 
 body {
     background: #1f1e33;
+    font-family: "Wanted Sans SemiBold", sans-serif;
 }
+
 
 /* Typearea */
 .typing-area {
@@ -28,9 +36,12 @@ body {
     width: 1000px;
     height: 100px;
     padding: 1rem;
+    font-family: "Wanted Sans SemiBold", sans-serif;
     font-size: 22px;
     background: #1f1e33;
     color: #ffffff;
+    border: none;
+    outline: none;
     resize: none;
 }
 
@@ -55,14 +66,15 @@ span {
 /* Keyboard Design */
 .keyboard {
     margin: 80px auto;
-    width: 1050px;
-    border: 1px solid #fff;
+    width: 1000px;
+    /* border: 1px solid #fff; */
 }
 
 button {
     margin: 5px;
     width: 50px;
     height: 50px;
+    font-family: "Wanted Sans SemiBold", sans-serif;
     font-size: 16px;
     background: #c8c8c8;
     border-radius: 0.3rem;
@@ -71,7 +83,6 @@ button {
     transition: all 0.3s;
 }
 
-/* shift > enter >= caps > tab, bksp*/
 .tab {
     width: 103px;
 }
@@ -95,6 +106,7 @@ button {
 .ctrl, .fn, .windows, .alt, .print {
     width: 78px;
 }
+
 .space {
     width: 435px;
 }
