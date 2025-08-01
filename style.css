@@ -1,3 +1,5 @@
+@import url('https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css');
+
 /* * {
     margin: 0;
     padding: 0;
@@ -6,12 +8,6 @@
     box-sizing: border-box;
     font-family: "Wanted Sans SemiBold", sans-serif;
 } */
-
-@font-face {
-    font-family: "Wanted Sans SemiBold";
-    src: url(https://github.com/100ehdals/DISC2025/blob/main/WANTEDSANS-SEMIBOLD.OTF) format(".OTF");
-    font-weight: 200;
-}
 
 body {
     background: #1f1e33;
