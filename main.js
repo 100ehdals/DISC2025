@@ -31,7 +31,7 @@ const dispTimer = setInterval(() => {
         clearInterval(dispTimer);
 
         const result = calcResult();
-        resultField.textContent = `${result} wpm`;
+        resultField.textContent = `${result} kpm`;
 
         return;
     }
