@@ -2,79 +2,80 @@
 <html lang="ko">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myKeysPerMinuteCalculator</title>
+    <title>myKeysPerMinuteCalc</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
     <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/static/split/WantedSans.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/static/split/WantedSans.min.css" />
 </head>
 <body>
-    <div class="typing-area">
-        <div class="request-string">
-            <p>The quick brown fox jumps over the lazy dog.</p>
+    <div class="container">
+        <div class="typing-area">
+            <div class="request-string">
+                <p id="req-str">
+                    They traveled night and day through a dangerous snowstorm.
+                    While temperatures dropped to negative 62 degrees, several dog died from exhaustion.
+                    But after five days of constant traveling, they finally arrived.
+                    And the town was saved by the dedicaton of the dogs.
+                </p>
+            </div>
+            <textarea placeholder="여기에 입력하세요..."></textarea>
         </div>
-        <textarea placeholder="여기에 입력하세요..."></textarea>
-    </div>
-    <div class="wpm-calc">
-        <span class="result">여기에 kpm 결과를 출력하세요...</span>
-    </div>
-    <h3 class="timer">Time passed: </h3>
-    <div class="keyboard">
+
+        <div style="height: 25vh;"></div>
+
+        <div class="wpm-calc">
+            <span class="result">여기에 kpm 결과를 출력하세요...</span>
+        </div>
+
+        <div class="timer">
+            <div class="progress">
+                <div class="progress-inner"></div>
+            </div>
+        </div>
+
+        <div class="keyboard">
         <div class="row1">
-            <button class="tab">⭾ Tab</button>
-            <button>Q</button>
-            <button>W</button>
-            <button>E</button>
-            <button>R</button>
-            <button>T</button>
-            <button>Y</button>
-            <button>U</button>
-            <button>I</button>
-            <button>O</button>
-            <button>P</button>
-            <button>[</button>
-            <button>]</button>
-            <button class="bksp">⌫ Bksp</button>
+            <button id="q">Q</button>
+            <button id="w">W</button>
+            <button id="e">E</button>
+            <button id="r">R</button>
+            <button id="t">T</button>
+            <button id="y">Y</button>
+            <button id="u">U</button>
+            <button id="i">I</button>
+            <button id="o">O</button>
+            <button id="p">P</button>
         </div>
         <div class="row2">
-            <button class="caps">Caps Lock</button>
-            <button>A</button>
-            <button>S</button>
-            <button>D</button>
-            <button>F</button>
-            <button>G</button>
-            <button>H</button>
-            <button>J</button>
-            <button>K</button>
-            <button>L</button>
-            <button>: ;</button>
-            <button>" '</button>
-            <button class="enter">Enter ⏎</button>
+            <button id="a">A</button>
+            <button id="s">S</button>
+            <button id="d">D</button>
+            <button id="f">F</button>
+            <button id="g">G</button>
+            <button id="h">H</button>
+            <button id="j">J</button>
+            <button id="k">K</button>
+            <button id="l">L</button>
         </div>
         <div class="row3">
-            <button class="shift">⇧ LShift</button>
-            <button>Z</button>
-            <button>X</button>
-            <button>C</button>
-            <button>V</button>
-            <button>B</button>
-            <button>N</button>
-            <button>M</button>
-            <button>,</button>
-            <button>.</button>
-            <button>? /</button>
-            <button class="shift">⇧ RShift</button>
+            <button id="z">Z</button>
+            <button id="x">X</button>
+            <button id="c">C</button>
+            <button id="v">V</button>
+            <button id="b">B</button>
+            <button id="n">N</button>
+            <button id="m">M</button>
+            <button class="bksp" id="Backspace">⌫</button>
         </div>
         <div class="row4">
-            <button class="ctrl">Ctrl</button>
-            <button class="fn">Fn</button>
-            <button class="windows">⌘</button>
-            <button class="space">Space</button>
-            <button class="alt">Alt</button> 
-            <button class="print">☰</button>
-            <button class="ctrl">Ctrl</button>
+            <!-- <button class="not-using" style="width:200px; height:50px; border:none; color:#1f1e33;">.</button> -->
+            <button class="space" id=" " style="width:400px; height:50px;">Space</button>
+        </div>
         </div>
     </div>
+    
+
     <script src="main.js"></script>
 </body>
 </html>
