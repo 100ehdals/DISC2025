@@ -21,7 +21,7 @@
 .typearea {
     position: relative;
     width: 800px;
-    height: 300px;
+    height: 250px;
 }
 
 .req-str {
@@ -50,8 +50,8 @@
 }
 
 
-/* WPM calculator */
-.wpm-calc {
+/* State Displayer */
+.statedisp {
     margin: 25px;
     width: 300px;
     color: #ffffff;
@@ -59,8 +59,29 @@
 }
 
 span.result {
-    margin: 0 auto;
+    display: block;
+    margin-bottom: 1rem;
     text-align: center;
+}
+
+.show-result {
+    display: none;
+    width: 300px;
+    height: 26px;
+    font-size: 20px;
+    transform: scale(1);
+    transition: 0.3s ease;
+    border: none;
+}
+
+.show-result:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}
+
+.clicked {
+    color: #949494; 
 }
 
 
@@ -74,11 +95,12 @@ span.result {
 }
 
 .progress-inner {
-    background: #585858; 
+    background: #00ff00; 
     position: absolute;
-    width: 100%;
+    width: 0%;
     height: 100%;
     border-radius: 0.3rem;
+    filter: hue-rotate(0deg);
 }
 
 
@@ -125,5 +147,5 @@ button {
 /* Keypressed anim */
 .pressed {
     background: #949494;
-    transition: 0.2s;
+    transition: 0.1s;
 }
