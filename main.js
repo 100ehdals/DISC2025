@@ -3,7 +3,7 @@ const keyboardBtn = document.querySelector("button");
 const progressBar = document.querySelector(".progress-inner");
 const inputField = document.querySelector(".overlay-input");
 const dispState = document.querySelector(".result");
-const resultBtn = document.querySelector(".show-result");
+const resultBtn = document.querySelector(".redo");
 const reqStr = document.querySelector(".req-str");
 const inputStr = document.querySelector(".overlay-input");
 
@@ -12,57 +12,77 @@ const inputStr = document.querySelector(".overlay-input");
 var isTyping = false;  // Check if user started typing
 const countingTime = 60;  // timeout in seconds
 
-/* Typearea */
+const text = "A person who thinks all the time has nothing to think except thoughts. \
+            So, he loses touch with reality and live in the world of illusions. \
+            By thoughts, I mean specifically, chatter in the skull, \
+            perpetual and compulsive repetition of words, of reckoning and calculating.";
+let startTime, endTime, countdown;
+let wpm = 0, acc = 0;
+let finalWpm = 0;
 
 
-/* WPM calculation */
 function calculateWpm() {
-    let segmentInterval = 100;
-    let segmentInputCount = 0;
-    let arrayLen = countingTime * (1000 / segmentInterval);
-    let segmentList = new Array(arrayLen + (1000 / segmentInterval)).fill(0);
-    let segmentNo = 0;  // nth segment
-    let currentCpm = 0;
+    const originalText = reqStr.innerText.trim();
 
-    inputField.addEventListener("input", () => {
-        segmentInputCount++;
-
-        // count characters in the inputfield
+    inputField.addEventListener('input', () => {
         const typedText = inputField.value.trim();
-        const inputLength = typedText.length;
-    });
+        const typedWords = typedText.split(' ');
+        const typedChars = typedText.length;
 
-    // update cpm every 100 msec
-    var cpsCalc = setInterval(() => {
-        segmentList[segmentNo + (1000/segmentInterval) - 1] = segmentInputCount;
-
-        // calculate cps
-        for (let i=segmentNo; i<segmentNo+(1000/segmentInterval); i++) {
-            currentCpm += segmentList[i];
+        if (typedText === originalText) {
+            testEnd();
+            return;
         }
 
-        console.log(segmentList);
+        const typedWordCount = typedWords.length;
+        const elapsedTimeInSeconds = (Date.now() - startTime) / 1000;
+        wpm = Math.round((typedWordCount / elapsedTimeInSeconds) * 60);
 
-        dispState.innerHTML = currentCpm * 12 + "wpm";
-        segmentNo++;
+        dispState.innerHTML = wpm + "wpm" + '<br><br>' + calculateAcc(originalText, typedText) + "%" + '<br>';
+    });
 
-        segmentInputCount = 0;
-        currentCpm = 0;
-
-        // if timeout then stop calculating
-        if (isTyping == false) clearInterval(cpsCalc);
-    }, segmentInterval);
+    startTime = Date.now();
 }
 
+function testEnd() {
+    progressBar.style.width = "100%";
+    progressBar.style.background = "gray";
+    inputStr.disabled = true;
+    resultBtn.style.display = 'block';
+    isTyping = false;
+    finalWpm = wpm;
+    clearInterval(countdown);
+    console.log(finalWpm, wpm);
+}
 
+function calculateAcc(original, input) {
+    const minLength = Math.min(original.length, input.length);
+    let accChars = 0;
 
-/* Timer */ 
+    for (let i=0; i<=minLength; i++) {
+        if (original[i] === input[i]) accChars++;
+    }
+
+    return Math.round((accChars / original.length) * 100);
+}
+
+function resetTest() {
+    inputField.value = '';
+    reqStr.innerHTML = "Press TAB to start";
+    isTyping = false;
+    inputStr.disabled = true;
+    resultBtn.style.display ='none';   
+    dispState.innerHTML = "";
+    progressBar.style.background = "#00ff00";
+    progressBar.style.width = "0%";
+}
+
 function activateTimer() {
     let interval = 10;  // update progress bar every 10 msec
     let totalTicks = countingTime * 1000 / interval;
     let tickCount = totalTicks;
 
-    var countdown = setInterval(() => {
+    countdown = setInterval(() => {
         tickCount--;
 
         let progressWidth = tickCount / totalTicks * 100;  // Timer progress into %
@@ -73,11 +93,7 @@ function activateTimer() {
         }
         else {
             clearInterval(countdown);
-            progressBar.style.width = "100%";
-            progressBar.style.background = "gray";
-            inputStr.disabled = true;
-            resultBtn.style.display = 'block';
-            isTyping = false;
+            testEnd();
         }
     }, interval);
 }
@@ -88,20 +104,13 @@ const setProgressBarColor = (width) => {
 }
 
 
-/* Result */
-
-
 /* Keyboard Animation */
 window.addEventListener('keydown', e => {
     const pressedKey = document.getElementById(e.key);
 
     if (!isTyping && e.key === 'Tab') {
         console.log("Start");
-        reqStr.innerHTML =
-            "A person who thinks all the time has nothing to think except thoughts. \
-            So, he loses touch with reality and live in the world of illusions. \
-            By thoughts, I mean specifically, chatter in the skull, \
-            perpetual and compulsive repetition of words, of reckoning and calculating.";
+        reqStr.innerHTML = text;
         isTyping = true;
         inputStr.disabled = false;
         activateTimer();
@@ -124,4 +133,9 @@ resultBtn.addEventListener("mousedown", () => {
 
 resultBtn.addEventListener("mouseup", () => {
     resultBtn.classList.remove("clicked");
-})
+});
+
+resultBtn.addEventListener("click", () => {
+    resetTest();
+});
+
