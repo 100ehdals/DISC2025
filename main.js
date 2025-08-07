@@ -5,36 +5,27 @@ let setTimer = 10;
 
 let isCalculating = true;
 
-// 키를 누를때마다 어떤 키를 눌렀는지 로그에 출력해주는 코드
+
+/* Typearea */
+
+
+/* Timer */ 
+
+
+/* WPM calculation */
+
+
+/* Keyboard Animation */
+// keydown 동안 버튼 배경 바꾸기 anim
 window.addEventListener('keydown', e => {
-    console.log(e.key);
+    const pressedKey = document.getElementById(e.key);
+    if (pressedKey) pressedKey.classList.add("pressed");
+});
 
-    if (e.key === 'Enter') {
-        isCalculating = false;
-        console.log('Calcualtion end?', isCalculating);
-    }
-})
+// keyup하면 원래의 버튼 배경으로 유지
+window.addEventListener('keyup', e => {
+    const pressedKey = document.getElementById(e.key);
+    if (pressedKey) pressedKey.classList.remove("pressed");
+});
 
-function calcResult() {
-    // wpm = (wordCount * 60) / timer
-    const wordCount = inputField.value.length;
-    const result = wordCount * 60 / 10;
 
-    return result;
-}
-
-// 10초 타이머 --> 참고용
-const dispTimer = setInterval(() => {
-    timer.textContent = setTimer;
-
-    if (setTimer === 0) {
-        clearInterval(dispTimer);
-
-        const result = calcResult();
-        resultField.textContent = `${result} kpm`;
-
-        return;
-    }
-
-    setTimer--;
-}, 1000);
