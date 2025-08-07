@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myKeysPerMinuteCalc</title>
@@ -10,22 +11,21 @@
 </head>
 <body>
     <div class="container">
-        <div class="typing-area">
-            <div class="request-string">
-                <p id="req-str">
-                    They traveled night and day through a dangerous snowstorm.
-                    While temperatures dropped to negative 62 degrees, several dog died from exhaustion.
-                    But after five days of constant traveling, they finally arrived.
-                    And the town was saved by the dedicaton of the dogs.
-                </p>
-            </div>
-            <textarea placeholder="여기에 입력하세요..."></textarea>
+        <div style="height: 10vh;"></div>
+
+        <div class="typearea">
+            <p class="req-str">
+                <!-- They traveled night and day through a dangerous snowstorm.
+                While temperatures dropped to negative 62 degrees, several dog died from exhaustion.
+                But after five days of constant traveling, they finally arrived.
+                And the town was saved by the dedication of the dogs. -->
+                Press TAB to start
+            </p>
+            <textarea class="overlay-input" disabled></textarea>
         </div>
 
-        <div style="height: 25vh;"></div>
-
         <div class="wpm-calc">
-            <span class="result">여기에 kpm 결과를 출력하세요...</span>
+            <span class="result">Your CPM/WPM shows here</span>
         </div>
 
         <div class="timer">
@@ -35,47 +35,46 @@
         </div>
 
         <div class="keyboard">
-        <div class="row1">
-            <button id="q">Q</button>
-            <button id="w">W</button>
-            <button id="e">E</button>
-            <button id="r">R</button>
-            <button id="t">T</button>
-            <button id="y">Y</button>
-            <button id="u">U</button>
-            <button id="i">I</button>
-            <button id="o">O</button>
-            <button id="p">P</button>
-        </div>
-        <div class="row2">
-            <button id="a">A</button>
-            <button id="s">S</button>
-            <button id="d">D</button>
-            <button id="f">F</button>
-            <button id="g">G</button>
-            <button id="h">H</button>
-            <button id="j">J</button>
-            <button id="k">K</button>
-            <button id="l">L</button>
-        </div>
-        <div class="row3">
-            <button id="z">Z</button>
-            <button id="x">X</button>
-            <button id="c">C</button>
-            <button id="v">V</button>
-            <button id="b">B</button>
-            <button id="n">N</button>
-            <button id="m">M</button>
-            <button class="bksp" id="Backspace">⌫</button>
-        </div>
-        <div class="row4">
-            <!-- <button class="not-using" style="width:200px; height:50px; border:none; color:#1f1e33;">.</button> -->
-            <button class="space" id=" " style="width:400px; height:50px;">Space</button>
-        </div>
+            <div class="row1">
+                <button id="q">Q</button>
+                <button id="w">W</button>
+                <button id="e">E</button>
+                <button id="r">R</button>
+                <button id="t">T</button>
+                <button id="y">Y</button>
+                <button id="u">U</button>
+                <button id="i">I</button>
+                <button id="o">O</button>
+                <button id="p">P</button>
+            </div>
+            <div class="row2">
+                <button id="a">A</button>
+                <button id="s">S</button>
+                <button id="d">D</button>
+                <button id="f">F</button>
+                <button id="g">G</button>
+                <button id="h">H</button>
+                <button id="j">J</button>
+                <button id="k">K</button>
+                <button id="l">L</button>
+            </div>
+            <div class="row3">
+                <button id="z">Z</button>
+                <button id="x">X</button>
+                <button id="c">C</button>
+                <button id="v">V</button>
+                <button id="b">B</button>
+                <button id="n">N</button>
+                <button id="m">M</button>
+                <button class="bksp" id="Backspace">⌫</button>
+            </div>
+            <div class="row4">
+                <!-- <button class="not-using" style="width:200px; height:50px; border:none; color:#1f1e33;">.</button> -->
+                <button class="space" id=" " style="width:400px; height:50px;">Space</button>
+            </div>
         </div>
     </div>
     
-
     <script src="main.js"></script>
 </body>
 </html>
